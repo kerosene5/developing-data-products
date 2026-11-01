@@ -1,0 +1,54 @@
+---
+title: "Car Fuel Efficiency Predictor"
+author: "kerosene5"
+date: "`r format(Sys.Date())`"
+output:
+  ioslides_presentation:
+    self_contained: true
+    widescreen: true
+---
+
+## A simple, interactive MPG estimate
+
+- Enter **weight, horsepower, cylinders, and transmission**.
+- See an estimated fuel efficiency in miles per gallon.
+- Get a **95% prediction interval**, not just a single number.
+- Compare the estimate with cars in the training data.
+
+The app updates immediately whenever an input changes.
+
+## How the Shiny app works
+
+- `ui.R` supplies a slider, numeric input, drop-down menu, and radio buttons.
+- A reactive expression in `server.R` converts those inputs into a new car.
+- R's `predict()` function calculates the MPG estimate and interval.
+- Reactive text and a plot display the results.
+
+The **How to use** tab inside the app explains the workflow and limitations for new users.
+
+## Reproducible model and example
+
+The app fits a multiple linear regression to the 32 cars in R's `mtcars` dataset:
+
+```{r mpg-model}
+model <- lm(mpg ~ wt + hp + factor(cyl) + factor(am), data = mtcars)
+example_car <- data.frame(
+  wt = 3.0, hp = 150,
+  cyl = factor(4, levels = c(4, 6, 8)),
+  am = factor(1, levels = c(0, 1))
+)
+example_prediction <- predict(model, example_car, interval = "prediction")
+round(example_prediction, 2)
+```
+
+This example uses a 3,000-pound, 150-horsepower, four-cylinder manual car. The same model runs in the app.
+
+## Try the app and inspect the code
+
+**Live Shiny app**  
+https://kerosene5.shinyapps.io/car-fuel-efficiency/
+
+**Source code and this presentation**  
+https://github.com/kerosene5/developing-data-products
+
+The repository contains `app/ui.R`, `app/server.R`, and the reproducible R Markdown source for this five-slide pitch.
