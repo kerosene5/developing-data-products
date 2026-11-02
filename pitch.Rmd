@@ -46,7 +46,7 @@ This example uses a 3,000-pound, 150-horsepower, four-cylinder manual car. The s
 ## Try the app and inspect the code
 
 **Live Shiny app**  
-https://kerosene5.shinyapps.io/car-fuel-efficiency/
+https://velociper.shinyapps.io/car-fuel-efficiency/
 
 **Source code and this presentation**  
 https://github.com/kerosene5/developing-data-products

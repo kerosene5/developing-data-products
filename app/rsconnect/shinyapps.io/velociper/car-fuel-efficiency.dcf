@@ -1,0 +1,10 @@
+name: car-fuel-efficiency
+title:
+username: velociper
+account: velociper
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 18336986
+bundleId: 12768064
+url: https://velociper.shinyapps.io/car-fuel-efficiency/
+version: 1
